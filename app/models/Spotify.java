@@ -27,7 +27,6 @@ public class Spotify {
             connection().play(t, new PlaybackAdapter());
         } catch(Exception e) {
             Spotify.connection = null;
-            play(track);
         }
     }
     
