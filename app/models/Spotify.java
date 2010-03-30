@@ -21,9 +21,14 @@ public class Spotify {
     }
 
     public static void play(String track) throws Exception {
-        stop();
-        Track t = connection().browseTrack(track);
-        connection().play(t, new PlaybackAdapter());
+        try {
+            stop();
+            Track t = connection().browseTrack(track);
+            connection().play(t, new PlaybackAdapter());
+        } catch(Exception e) {
+            Spotify.connection = null;
+            play(track);
+        }
     }
     
     public static void stop() throws Exception {
